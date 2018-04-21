@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computed Test</title>
+    <link rel="dns-prefetch" href="">
+    <script src="vue.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="app">
+    {{fullName}}
+    {{age}}
+</div>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:'Yue',
+            lastName:'Chang',
+//            fullName:'Yue Chang',
+            age:25
+        },
+        computed:{
+            fullName:{
+                get:function () {
+                    return this.firstName + " " + this.lastName;
+                },
+                set:function (value) {
+                    let arr = value.split("");
+                    this.firstName = arr[0];
+                    this.lastName = arr[1];
+                }
+            }
+        }
+//        watch:{
+//            firstName:function () {
+//                console.log('firstName');
+//                return this.fullName = this.firstName + " " + this.lastName;
+//            },
+//            lastName:function () {
+//                console.log('lastName');
+//                return this.fullName = this.firstName + " " + this.lastName;
+//            }
+//        },
+//        methods:{
+//            fullName:function () {
+//                console.log('methods');
+//                return this.firstName + " " + this.lastName;
+//            }
+//        }
+    });
+</script>
+</body>
+</html>

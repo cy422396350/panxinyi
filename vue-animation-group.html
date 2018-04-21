@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-animation-group</title>
+    <link rel="dns-prefetch" href="">
+    <style>
+        .v-enter,.v-leave-to{
+            opacity:0;
+        }
+        .v-enter-active,.v-leave-active{
+            transition:opacity 1s;
+        }
+    </style>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <transition-group>
+        <div v-for="item of list" :key="item.id">
+            {{item.title}}
+        </div>
+    </transition-group>
+    <button type="button" @click="handleClick">添加</button>
+</div>
+<script>
+    let count = 0;
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            list:[],
+        },
+        methods:{
+            handleClick:function () {
+                this.list.push({title:'hello',id:count++});
+            }
+        }
+    })
+</script>
+</body>
+</html>

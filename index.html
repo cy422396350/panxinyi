@@ -2,11 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>react</title>
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>Vue</title>
+    <script src="vue.js"></script>
 </head>
 <body>
-    <h3>React</h3>
+<div id="app">
+    <input type="text" v-model="inputValue"/>
+    <button @click="handleBtnClick" type="submit">提交</button>
+    <ul>
+        <todo-item @delete='handleItemDelete'
+                   :index="index"
+                   :content="item"
+                   v-for="(item, index) in list"></todo-item>
+    </ul>
+</div>
+<script>
+    //    Vue.component('TodoItem',{
+    //        props:['content'],
+    //        template:"<li>{{content}}</li>",
+    //    });
+
+    let TodoTemplate = {
+        props: ['content','index'],
+        template: "<li @click='handleItemClick'>{{content}}</li>",
+        methods: {
+            handleItemClick: function () {
+                this.$emit('delete',this.index);
+            }
+        }
+    };
+    let app = new Vue({
+        components: {
+            TodoItem: TodoTemplate,
+        },
+        el: '#app',
+        data: {list: [], inputValue: ""},
+        methods: {
+            handleBtnClick: function () {
+                this.list.push(this.inputValue);
+                this.inputValue = "";
+            },
+            handleItemDelete: function (value) {
+                this.list.splice(value,1);
+            }
+        }
+    });
+</script>
 </body>
 </html>

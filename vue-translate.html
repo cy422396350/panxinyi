@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-translate</title>
+    <link rel="dns-prefetch" href="">
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <counter :count="2" ref="one" @change="inc"></counter>
+    <counter :count="4" ref="two" @change="inc"></counter>
+    <counter :count="3" ref="three" @change="inc"></counter>
+    <div>{{totalNumber}}</div>
+</div>
+<script>
+    let count = {
+        template: '<div @click="handleClick">{{number}}</div>',
+        props: ['count'],
+        data: function () {
+            return {
+                number: this.count
+            }
+        },
+        methods: {
+            handleClick: function () {
+                this.number++;
+                this.$emit('change', 1);
+            }
+        }
+    };
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            totalNumber: 0
+        },
+        components: {
+            counter: count
+        },
+//        computed: {
+//            totalNumber: {
+//                get: function () {
+//                    return this.$refs.one.number + this.$refs.two.number + this.$refs.three.number;
+//                }
+//            }
+//        },
+        methods: {
+            inc: function (value) {
+                this.totalNumber += value;
+            }
+        },
+        mounted:function () {
+            this.totalNumber = this.$refs.one.number + this.$refs.two.number + this.$refs.three.number;
+        }
+    });
+</script>
+</body>
+</html>

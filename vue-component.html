@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-component</title>
+    <link rel="dns-prefetch" href="">
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <table>
+        <tbody>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+        <tr is="row"></tr>
+        </tbody>
+    </table>
+    <count ref="one" @change="handleChange"></count>
+    <count ref="two" @change="handleChange"></count>
+    <div>{{totalNumber}}</div>
+</div>
+<script>
+    Vue.component('row', {
+        data: function () {
+            return {
+                content1: 'content1',
+                content2: 'content2'
+            }
+        },
+        template: `<tr><td>{{content1}}</td><td>{{content2}}</td></tr>`
+    });
+
+    Vue.component('count', {
+        data: function () {
+            return {
+                number: 0
+            }
+        },
+        template: `<div @click="handleClick">{{number}}</div>`,
+        methods: {
+            handleClick: function () {
+                this.number++;
+                this.$emit('change');
+            }
+        }
+    });
+    let vm = new Vue({
+        el: "#root",
+        data: {
+            totalNumber: 0
+        },
+        methods: {
+            handleChange: function () {
+                this.totalNumber = this.$refs.one.number + this.$refs.two.number;
+            }
+        }
+    });
+</script>
+</body>
+</html>

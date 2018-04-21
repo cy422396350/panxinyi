@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-slot</title>
+    <link rel="dns-prefetch" href="">
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <content-body>
+        <template slot-scope="props">
+            <h1>{{props.item}}</h1>
+        </template>
+    </content-body>
+</div>
+<script>
+    Vue.component('content-body',{
+        template:`<div class="content">
+<slot v-for="item of list" :item=item></slot>
+</div>`,
+        data:function () {
+            return {
+                list:[1,2,3,4]
+            }
+        }
+    });
+    let vm = new Vue({
+        el:'#app',
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-for</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-for="(item,index) of list" :key="item.id">
+            <div>{{item.value}}</div>
+            <span>--------{{item.id}}</span>
+        </template>
+
+        <template v-for="(info,key,ind) of userInfo">
+            <div>{{info}}</div>
+            <span>--------{{key}}</span>
+        </template>
+    </div>
+    <script type="text/javascript">
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                list:[
+                    {'id':20180422,'value':'one'},
+                    {'id':20180423,'value':'two'},
+                    {'id':20180424,'value':'three'},
+                    {'id':20180425,'value':'four'},
+                    {'id':20180426,'value':'five'},
+                    {'id':20180427,'value':'six'},
+                ],
+                userInfo:{
+                    name:'ChangYue',
+                    age:28,
+                    gender:"male",
+                    salary:"secret"
+                }
+            },
+            mounted:function () {
+                let that = this;
+                setTimeout(function (that) {
+                    that.list.splice(1,1,{'id':2019999999,'value':'nine'})
+                },3000,that)
+            }
+        })
+    </script>
+</body>
+</html>

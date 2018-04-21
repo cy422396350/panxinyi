@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-animation</title>
+    <link rel="dns-prefetch" href="">
+    <link rel="stylesheet" href="animate.min.css" type="text/css">
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript" src="velocity.min.js"></script>
+    <style>
+        .fade-enter,.fade-leave-to{
+            opacity:0;
+        }
+        .fade-enter-active,.fade-leave-active{
+            transition:opacity 1s;
+        }
+    </style>
+</head>
+<body>
+<!--  @before-enter="handleBeforeEnter"
+        @enter="handleEnter"
+        @after-enter="handleAfterEnter"  -->
+<div id="app">
+
+    <transition-group
+        mode="out-in"
+        :duration="{enter:10000,leave:5000}"
+        name="fade"
+        appear
+        appear-active-class="animated swing fade-enter-active"
+        enter-active-class="animated swing fade-enter-active"
+        leave-active-class="animated shake fade-leave-active"
+    >
+        <div v-if="show" key="hello1">hello world</div>
+        <input type="button" value="提交" @click="toggle" key="input">
+        <div v-if="show" key="hello">hello world</div>
+        <div v-else key="bye">bye world</div>
+        <component :is="type" key="child"></component>
+    </transition-group>
+
+
+</div>
+<script>
+    Vue.component('child',{
+        template:'<div>child</div>'
+    });
+
+    Vue.component('child-one',{
+        template:'<div>child-one</div>'
+    });
+
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            show: true,
+            type:'child'
+        },
+        methods: {
+            toggle: function () {
+                this.show = !this.show;
+                this.type = this.type === 'child' ? 'child-one': 'child';
+            },
+            handleBeforeEnter:function (el) {
+                el.style.opacity = 0;
+            },
+            handleAfterEnter:function (el,done) {
+                Velocity(el,{opacity:1},{
+                    duration:1000,
+                    complete:done
+                })
+            },
+            handleEnter:function (el) {
+                alert('完成');
+            }
+        }
+    })
+</script>
+</body>
+</html>

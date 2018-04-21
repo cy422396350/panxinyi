@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-props</title>
+    <link rel="dns-prefetch" href="">
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child content="234" @click.native="handleNativeClick"></child>
+    </div>
+    <script>
+        Vue.component('child',{
+            template:'<div>{{content}}</div>',
+            props:{
+                content:{
+                    type:String,
+                    require:true,
+                    defaultValue:'defauleValue',
+                    validator:function (value) {
+                        return value.length>5;
+                    }
+                }
+            },
+        });
+        let vm = new Vue({
+            el:"#app",
+            methods:{
+                handleNativeClick:function () {
+                    let pro = prompt('请输入的你姓名','');
+                    if(pro !== ''){
+                        console.log(confirm("xxxxxxxxxxxxxx"));
+                        alert('handleNativeClick');
+                    }else {
+                        alert('请输入的你姓名');
+                    }
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
