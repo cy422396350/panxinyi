@@ -9,10 +9,16 @@ import 'styles/reset.css'
 import 'styles/border.css'
 // 消除点击延迟（移动端）
 import fastClick from 'fastClick'
+// iconfont
 import 'styles/iconfont.css'
-// import './assets/styles/variabies.styl'
+// css变量文件
+import 'styles/variabies.styl'
+// vue-swiper 引入
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 
 fastClick.attach(document.body)
+Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
