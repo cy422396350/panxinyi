@@ -2,6 +2,7 @@
   <div>
     <home-header></home-header>
     <home-swiper></home-swiper>
+    <home-icon></home-icon>
     <div>test</div>
   </div>
 </template>
@@ -9,11 +10,13 @@
 <script>
 import HomeHeader from './layout/header'
 import HomeSwiper from './layout/swiper.vue'
+import HomeIcon from './layout/home-icon'
 export default {
   name: 'Home',
   components: {
     HomeHeader,
-    HomeSwiper
+    HomeSwiper,
+    HomeIcon
   },
   data () {
     return {
