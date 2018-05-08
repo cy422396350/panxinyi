@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>css3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    .wrapper{
+        -webkit-perspective: 800;
+        -webkit-perspective-origin: 50% 50%;
+        -moz-perspective: 800;
+        -moz-perspective-origin: 50% 50%;
+        -ms-perspective: 800;
+        -ms-perspective-origin: 50% 50%;
+        -o-perspective: 800;
+        -moz-perspective-origin: 50% 50%;
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .inner{
+        -webkit-transform-style: -webkit-preserve -3d;
+        -ms-webkit: preserve -3d;
+        -o-webkit: preserve -3d;
+        -moz-webkit: preserve -3d;
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        background-color: brown;
+    }
+    .page{
+        width: 500px;
+        height: 500px;
+        line-height: 500px;
+        font-size: 300px;
+        text-align: center;
+        color: white;
+        background-color: black;
+        position: absolute;
+        -webkit-transform-origin: bottom;
+        -webkit-transition: -webkit-transform 1s linear;
+    }
+    #page2,#page3,#page4,#page5,#page6{
+        -webkit-transform: rotateX(-90deg);
+    }
+    #page1{
+        -webkit-transform:rotateX(0deg);
+    }
+    .button a{cursor: pointer;}
+</style>
+<script type="text/javascript">
+    var currIndex =1;
+    function next(){
+        let currEle = document.getElementById('page'+currIndex);
+        currEle.style.webkitTransform="rotateX(-90deg)";
+        currIndex++;
+        if(currIndex == 7){
+            currIndex =1;
+        }
+        let nextIndex = currIndex;
+        let nextEle = document.getElementById('page'+nextIndex);
+        nextEle.style.webkitTransform = 'rotateX(0deg)';
+    }
+
+    function prev(){
+        let currEle = document.getElementById('page'+currIndex);
+        currEle.style.webkitTransform="rotateX(-90deg)";
+        currIndex--;
+        if(currIndex == 0){
+            currIndex =6;
+        }
+        let prevIndex = currIndex;
+        let nextEle = document.getElementById('page'+prevIndex);
+        nextEle.style.webkitTransform = 'rotateX(0deg)';
+    }
+</script>
+<body>
+    <div class="wrapper">
+        <div class="inner">
+            <div class="page" id="page1">1</div>
+            <div class="page" id="page2">2</div>
+            <div class="page" id="page3">3</div>
+            <div class="page" id="page4">4</div>
+            <div class="page" id="page5">5</div>
+            <div class="page" id="page6">6</div>
+        </div>
+    </div>
+    <div style="text-align:center" class="button">
+        <span><a href="javascript:next();">next</a>&nbsp;<a href="javascript:prev()">prev</a></span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+@import "https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css";
+html,body{
+    height: 100%;
+    overflow: hidden;
+}
+#container,.sections,.section{
+    height: 100%;
+    position: relative;
+}
+.sections{
+    transition: all 500ms ease;
+}
+#page0{
+    background-image: url('../images/1.jpg');
+    background-size: cover;
+    background-position:50% 50%;
+}
+#page1{
+    background: url('../images/2.jpg');
+    background-size: cover;
+    background-position:50% 50%;
+}
+#page2{
+    background: url('../images/3.jpg');
+    background-size: cover;
+    background-position:50% 50%;
+}
+#page3{
+    background: url('../images/4.jpg');
+    background-size: cover;
+    background-position:50% 50%;
+}
+.horizontal{
+    float: left;
+    width: 25%;
+}
+h3{
+    margin: 0px;
+    height: 100%;
+}
+/**
+ *横屏按钮样式
+*/
+.pages li{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+.pages li.active{
+    width: 14px;
+    height: 14px;
+    border: 2px solid #FFFE00;
+    background: none;
+    margin-left: 0;
+}
+.vertical.pages {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+}
