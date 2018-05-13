@@ -14,6 +14,9 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    swiperList: Array
+  },
   data () {
     return {
       swiperOption: {
@@ -21,13 +24,7 @@ export default {
           el: '.swiper-pagination'
         },
         loop: true
-      },
-      swiperList: [
-        {'id': '0001', 'imgUrl': 'https://img.mukewang.com/5abb727800018fd009360316.jpg'},
-        {'id': '0002', 'imgUrl': 'https://img.mukewang.com/5ac356a6000166ec09360316.jpg'},
-        {'id': '0003', 'imgUrl': 'https://img.mukewang.com/5ad9c34b0001056209360316.jpg'},
-        {'id': '0004', 'imgUrl': 'https://img.mukewang.com/5ad9c33300012eff09360316.jpg'}
-      ]
+      }
     }
   }
 }
