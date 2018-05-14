@@ -12,70 +12,15 @@
       <div class="area border-topbottom">
         <div class="title">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div><div class="button-wrapper">
-          <div class="button">北京</div>
-        </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">北京</div>
+          <div class="button-wrapper" v-for="item of hotCity" :key="item.id">
+            <div class="button">{{item.name}}</div>
           </div>
         </div>
       </div>
-      <div class="area border-topbottom">
-        <div class="title">A</div>
+      <div class="area border-topbottom" v-for="(items , key) of cities" :key="key">
+        <div class="title">{{key}}</div>
         <ul class="item-list">
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
-          <li class="item border-bottom">阿联酋</li>
+          <li class="item border-bottom" v-for="inneritem of items" :key="inneritem.id">{{inneritem.name}}</li>
         </ul>
       </div>
     </div>
@@ -86,6 +31,10 @@
 import BScroll from 'better-scroll'
 export default{
   name: 'cityList',
+  props: {
+    hotCity: Array,
+    cities: Object
+  },
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
   }
@@ -101,14 +50,13 @@ export default{
 border-bottom
   &:before
     border-color #ccc
-.cityList
+.wrapper
   position absolute
   top 1.58rem
   left 0
-  right .15rem
+  right 0
   bottom 0
   overflow hidden
-  z-index -1
 .title
   line-height .44rem
   background #eee
