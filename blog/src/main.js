@@ -17,14 +17,19 @@ import 'styles/variabies.styl'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
+import store from './store'
+
 fastClick.attach(document.body)
 Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
+
+Vue.prototype.bs = new Vue()
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store
 })

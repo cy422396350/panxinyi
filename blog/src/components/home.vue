@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-header :city="city"></home-header>
+    <home-header></home-header>
     <home-swiper :swiperList="swiperList">></home-swiper>
     <home-icon :iconList="iconList">></home-icon>
     <recommend :recomendList="recomendList">></recommend>

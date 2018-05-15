@@ -16,6 +16,7 @@ export default {
 <style scoped lang="stylus">
   @import "~styles/variabies.styl"
   .cityHeader
+    z-index 888!important
     height $headerHeight
     line-height $headerHeight
     color: #fff

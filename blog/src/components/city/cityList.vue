@@ -5,7 +5,7 @@
         <div class="title">您的位置</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
@@ -13,14 +13,18 @@
         <div class="title">热门城市</div>
         <div class="button-list">
           <div class="button-wrapper" v-for="item of hotCity" :key="item.id">
-            <div class="button">{{item.name}}</div>
+            <div class="button" @click="handleClickCity(item.name)">{{item.name}}</div>
           </div>
         </div>
       </div>
-      <div class="area border-topbottom" v-for="(items , key) of cities" :key="key">
+      <div class="area border-topbottom" v-for="(items , key) of cities" :key="key" :ref="key">
         <div class="title">{{key}}</div>
         <ul class="item-list">
-          <li class="item border-bottom" v-for="inneritem of items" :key="inneritem.id">{{inneritem.name}}</li>
+          <li class="item border-bottom"
+              v-for="inneritem of items"
+              :key="inneritem.id"
+              @click="handleClickCity(inneritem.name)"
+          >{{inneritem.name}}</li>
         </ul>
       </div>
     </div>
@@ -35,8 +39,20 @@ export default{
     hotCity: Array,
     cities: Object
   },
+  methods: {
+    handleClickCity (city) {
+      this.$store.dispatch('changeCity', city)
+      this.$router.push('/')
+    }
+  },
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
+    let scroll = this.scroll
+    let med = function (value) {
+      scroll.scrollToElement(this.$refs[value][0])
+    }
+    let med1 = med.bind(this)
+    this.bs.$on('changeLetter', med1)
   }
 }
 </script>

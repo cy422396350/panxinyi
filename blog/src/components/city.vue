@@ -1,7 +1,7 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search></city-search>
+    <city-search :city="cities"></city-search>
     <city-list :cities="cities" :hotCity="hot"></city-list>
     <city-alphabet :alphabet="cities"></city-alphabet>
   </div>
@@ -13,6 +13,7 @@ import CitySearch from './city/citySearch'
 import CityList from './city/cityList'
 import CityAlphabet from './city/cityAlphabet'
 import axios from 'axios'
+
 export default {
   name: 'City',
   components: {
