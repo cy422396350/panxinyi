@@ -12,16 +12,16 @@
       <div class="area border-topbottom">
         <div class="title">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hotCity" :key="item.id">
+          <div class="button-wrapper" v-for="item in hotCity" :key="item.id">
             <div class="button" @click="handleClickCity(item.name)">{{item.name}}</div>
           </div>
         </div>
       </div>
-      <div class="area border-topbottom" v-for="(items , key) of cities" :key="key" :ref="key">
+      <div class="area border-topbottom" v-for="(items , key) in cities" :key="key" :ref="key">
         <div class="title">{{key}}</div>
         <ul class="item-list">
           <li class="item border-bottom"
-              v-for="inneritem of items"
+              v-for="inneritem in items"
               :key="inneritem.id"
               @click="handleClickCity(inneritem.name)"
           >{{inneritem.name}}</li>
