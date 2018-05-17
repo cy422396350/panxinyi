@@ -4,7 +4,7 @@
       <swiper :options="swiperOption">
         <!-- slides -->
         <swiper-slide v-for="(item , index) in list" :key="index">
-          <img class="swiper-img" :src="item" alt="1">
+          <img class="swiper-img" :src="item" alt="1" style="max-width: 100%">
         </swiper-slide>
         <!-- Optional controls -->
         <div class="swiper-pagination" slot="pagination"></div>
@@ -48,24 +48,25 @@ export default{
 
 <style lang="stylus" scoped>
 .container >>> .swiper-container
-  overflow inherit
+  overflow: inherit
 .container
-  background #333333
-  position fixed
-  top 0
-  bottom 0
-  left 0
-  right 0
-  width 100%
-  display flex
-  flex-direction column
-  justify-content center
+  display: flex
+  flex-direction: column
+  justify-content: center
+  z-index: 99
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background: #000
   .wrapper
-    width 100%
-    padding-bottom 100%
-    height 0
+    height: 0
+    width: 100%
+    padding-bottom: 100%
+    .gallary-img
+      width: 100%
     .swiper-pagination
-      color:#eaeaea
-      position absolute
-      bottom -1rem
+      color: #fff
+      bottom: -1rem
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="banner" @click="showGallery">
-    <img src="/static/image/banner.jpg" >
+    <img :src="bannerImg" >
     <div class="banner-info">
-      <div class="banner-title">大连圣帝亚海洋世界（AAAAA景区）</div>
+      <div class="banner-title">{{sightName}}</div>
       <div class="banner-number">
         <span class="iconfont icon-image"></span>
         39
@@ -14,6 +14,11 @@
 <script>
 export default{
   name: 'DetailBanner',
+  props: {
+    'sightName': String,
+    'bannerImg': String,
+    'gallaryImgs': Array
+  },
   methods: {
     showGallery () {
       this.$emit('showGallery')
