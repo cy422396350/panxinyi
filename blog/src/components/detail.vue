@@ -8,11 +8,13 @@
     <keep-alive>
       <detail-header></detail-header>
     </keep-alive>
-    <detail-gallery
-      :list="gallaryImgs"
-      @closeGallery="handleClose"
-      v-show="showGallery"
-    ></detail-gallery>
+    <fade-animation>
+      <detail-gallery
+        :list="gallaryImgs"
+        @closeGallery="handleClose"
+        v-show="showGallery"
+      ></detail-gallery>
+    </fade-animation>
     <detail-list :piao="categoryList"></detail-list>
     <div class="content"></div>
   </div>
@@ -23,6 +25,7 @@ import DetailBanner from './detail/banner'
 import DetailGallery from 'common/gallery'
 import DetailHeader from './detail/header'
 import DetailList from './detail/list'
+import FadeAnimation from 'common/fadeAnimation'
 import axios from 'axios'
 export default{
   name: 'Detail',
@@ -30,7 +33,8 @@ export default{
     DetailBanner,
     DetailGallery,
     DetailHeader,
-    DetailList
+    DetailList,
+    FadeAnimation
   },
   data () {
     return {
