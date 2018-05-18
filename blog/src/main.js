@@ -8,7 +8,7 @@ import 'styles/reset.css'
 // 一像素边框的解决方案
 import 'styles/border.css'
 // 消除点击延迟（移动端）
-import fastClick from 'fastClick'
+import fastClick from 'fastclick'
 // iconfont
 import 'styles/iconfont.css'
 // css变量文件
