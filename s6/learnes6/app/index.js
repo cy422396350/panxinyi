@@ -7,4 +7,4 @@
 // test();
 // import './proxy';
 // import './promise';
-import './class';
+import './oop';

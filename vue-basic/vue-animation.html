@@ -27,9 +27,9 @@
         :duration="{enter:10000,leave:5000}"
         name="fade"
         appear
-        appear-active-class="animated swing fade-enter-active"
-        enter-active-class="animated swing fade-enter-active"
-        leave-active-class="animated shake fade-leave-active"
+        appear-active-class="animated bounceInLeft fade-enter-active"
+        enter-active-class="animated bounceInLeft fade-enter-active"
+        leave-active-class="animated bounceInLeft fade-leave-active"
     >
         <div v-if="show" key="hello1">hello world</div>
         <input type="button" value="提交" @click="toggle" key="input">
